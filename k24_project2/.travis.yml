@@ -3,6 +3,4 @@ sudo: false
 language : c
 compiler: gcc
 
-script:
-  - cmake .
-  - cmake --build . -- -j2
+script: scons
