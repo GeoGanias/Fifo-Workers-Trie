@@ -1,5 +1,5 @@
 # Fifo-Workers-Trie
-Εργασια 2 Προγραμματισμός Συστημάτων / Systems Programming assignment 2
+<b>Εργασια 2 Προγραμματισμός Συστημάτων / Systems Programming assignment 2</b>
 
     make
     ./jobExecutor -d docfile -w N
