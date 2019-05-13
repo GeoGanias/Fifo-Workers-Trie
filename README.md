@@ -3,11 +3,10 @@
 
     make
     ./jobExecutor -d docfile -w N
-Αρχικά το πρόγραμμα παίρνει σαν ορίσματα το docfile που περιέχει paths απο φακέλους. π.χ:
-
-*   dir1
-*   /home/tmp/dir2
-*   tempdir/dir3
+Αρχικά το πρόγραμμα παίρνει σαν ορίσματα το docfile που περιέχει paths απο φακέλους. π.χ:   
+   dir1     
+   /home/tmp/dir2   
+   tempdir/dir3     
 
 κλπ.
 και τον αριθμό των workers που θα φτιάξει. Φτιάχνει 2 fifo για κάθε worker, (1 "rfi" για να στελνει μηνύματα προς τον jobExecutor και 1 "fi" για να δέχεται μηνύματα απο τον jobExecutor, οπου i=0,1,2,...,N) και τις ανοιγει μολις τις φτιάξει, και τις κλείνουμε στο τέλος του προγραμματος.
@@ -31,7 +30,7 @@
 
 Μετά περιμένει να διαβάσει απο το fifo την εντολή που έγραψε ο jobExecutor μεχρι να δεχθεί το exit.
 
-</hr>
+====================
 
     /search
 Ο κάθε Worker δέχεται το query ολόκληρο (μαζί με το -d deadline) και διαβάζει το deadline που έχει.
@@ -46,16 +45,18 @@
     /wc
 κάθε worker αθροιζει τα bytes, τις λέξεις και τις γραμμές απο τα κείμενα που έχει και τα στέλνει στον jobExecutor. Αυτος κάνει ένα γενικό αθροισμα και τα τυπώνει στον χρήστη. 
 
-Τα Worker_logs αποθηκεύονται σε φάκελο log/ και είναι της μορφής:
-Time : Search : word1 : path1 : path2
-Time : Search : word_which_doesnt_exist
-Time : Maxcount : word : path1 : path2
-Time : Mincount : word : path1 : path2
-Time : WC : Bytes num1 : Total_Words num2 : Total_Lines num3
-Time : Search : word : path1
-Time : Search : word2
-Timeout
-Time : Search : word
+===================
+
+Τα Worker_logs αποθηκεύονται σε φάκελο log/ και είναι της μορφής:   
+Time : Search : word1 : path1 : path2   
+Time : Search : word_which_doesnt_exist     
+Time : Maxcount : word : path1 : path2      
+Time : Mincount : word : path1 : path2      
+Time : WC : Bytes num1 : Total_Words num2 : Total_Lines num3    
+Time : Search : word : path1     
+Time : Search : word2    
+Timeout     
+Time : Search : word    
 κλπ (Το Timeout είναι αν δεν προλάβει μεσα σε χρόνο -d να εκτελέσει ένα search, όμως γράφει τα search που πρόλαβε να κάνει ο worker πριν τελειώσει ο χρονος)
 
 Πάνω σε αυτά τα logs εγιναν τα bash scripts:
